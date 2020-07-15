@@ -1,10 +1,15 @@
 import * as models from './models.js';
-
-let user = localStorage.getItem('user');
+let usersData = JSON.parse(localStorage.getItem('usersDB'));
+let userIndex = localStorage.getItem('userIndex');
+let { avatar, emailId, password, name } = usersData[userIndex];
+let user = new models.User(avatar, emailId, password, name);
 
 function addPost() {
-	let text = document.getElementById('addPost');
-	data[user].addPost(text);
+	let text = document.getElementById('addPost').value;
+	let post = new models.Post(text, emailId);
+	user.addPost(post);
+	usersData[userIndex] = user;
+	localStorage.setItem('usersDB', JSON.stringify(usersData));
 }
 
 function refreshDisplay() {
@@ -14,7 +19,9 @@ function refreshDisplay() {
 window.onload = () => {
 	let addPostBtn = document.getElementById('addPostBtn');
 	addPostBtn.addEventListener('click', () => {
+		event.preventDefault();
+		console.log('adding post');
 		addPost();
-		refreshDisplay();
+		// refreshDisplay();
 	});
 };

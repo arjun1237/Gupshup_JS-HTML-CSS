@@ -5,7 +5,7 @@ export class Post {
 		this.postId = emailId + Date.now();
 		this.likes = 0;
 		this.comments = [];
-		this.timestamp = Date.now()
+		this.timestamp = Date.now();
 	}
 
 	edit(text) {
@@ -19,8 +19,8 @@ export class Post {
 
 	share() {}
 
-	getTimestamp(){
-		return this.timestamp
+	getTimestamp() {
+		return this.timestamp;
 	}
 
 	getLikes() {
@@ -112,10 +112,11 @@ export class User {
 		return this.posts;
 	}
 
-	addPost(text) {
-		text = text.trim();
+	addPost(post) {
+		let text = post.text.trim();
 		if (text.length != 0) {
-			this.posts.push(new Post(text, this.emailId));
+			let post = new Post(text, this.emailId);
+			this.posts.push(post);
 		}
 	}
 

@@ -40,16 +40,16 @@ const users = [
 
 let userIndex = users.findIndex((x) => x.getEmailId() === 'aayu@aayu.com');
 
-users[userIndex].addPost(
-	"India hasn't gained much from a drop in Chinese exports to the U.S., a Rabobank study shows."
-);
-users[userIndex].addPost('vnksdhrgksdnfv');
-users[userIndex].addPost('laejrg;ajergojaer');
 users[userIndex].addFollowers('arjun@arjun.com');
 users[userIndex].addFollowing('mani@mani.com');
 
-let usersDB = localStorage.getItem('users');
+let usersDB = localStorage.getItem('usersDB');
 console.log('creating DB');
 if (!usersDB) {
 	localStorage.setItem('usersDB', JSON.stringify(users));
+}
+
+let user = localStorage.getItem('userIndex');
+if (!user) {
+	localStorage.setItem('userIndex', JSON.stringify(userIndex));
 }
