@@ -1,126 +1,126 @@
 export class Post {
-    constructor(text, emailId) {
-        this.text = text;
-        // this.userId = userId;
-        this.postId = emailId + Date.now();
-        this.likes = 0;
-        this.comments = [];
-        this.timestamp = Date.now();
-    }
+	constructor(text, emailId) {
+		this.text = text;
+		// this.userId = userId;
+		this.postId = emailId + Date.now();
+		this.likes = 0;
+		this.comments = [];
+		this.timestamp = Date.now();
+	}
 
-    edit(text) {
-        text = text.trim();
-        if (text.length != 0) {
-            this.text = text;
-        }
-    }
+	edit(text) {
+		text = text.trim();
+		if (text.length != 0) {
+			this.text = text;
+		}
+	}
 
-    // delete() {}
+	// delete() {}
 
-    share() {}
+	share() {}
 
-    getTimestamp() {
-        return this.timestamp;
-    }
+	getTimestamp() {
+		return this.timestamp;
+	}
 
-    getLikes() {
-        return this.likes;
-    }
+	getLikes() {
+		return this.likes;
+	}
 
-    getComments() {
-        return this.comments;
-    }
+	getComments() {
+		return this.comments;
+	}
 
-    getPostId() {
-        return this.postId;
-    }
+	getPostId() {
+		return this.postId;
+	}
 
-    getText() {}
+	getText() {}
 
-    updateLikes(inc = true) {
-        if (inc) {
-            this.likes++;
-        } else if (this.likes != 0) {
-            this.likes--;
-        }
-    }
+	updateLikes(inc = true) {
+		if (inc) {
+			this.likes++;
+		} else if (this.likes != 0) {
+			this.likes--;
+		}
+	}
 
-    addComments(comment) {
-        this.comments.push(comment);
-    }
+	addComments(comment) {
+		this.comments.push(comment);
+	}
 }
 
 export class Comment {
-    constructor(text, userID) {
-        this.text = text;
-        this.timestamp = Date.now();
-        this.userID = userID;
-    }
+	constructor(text, userID) {
+		this.text = text;
+		this.timestamp = Date.now();
+		this.userID = userID;
+	}
 
-    edit() {}
+	edit() {}
 
-    getUserId() {}
+	getUserId() {}
 
-    getText() {}
+	getText() {}
 
-    getTimestamp() {}
+	getTimestamp() {}
 }
 
 export class User {
-    constructor(avatar, emailId, password, name) {
-        // this.userId = userId;
-        this.avatar = avatar;
-        this.emailId = emailId;
-        this.password = password;
-        this.name = name;
-        this.followers = [];
-        this.following = [];
-        this.trends = [];
-        this.posts = [];
-    }
+	constructor(avatar, emailId, password, name, followers = [], following = [], trends = [], posts = []) {
+		// this.userId = userId;
+		this.avatar = avatar;
+		this.emailId = emailId;
+		this.password = password;
+		this.name = name;
+		this.followers = followers;
+		this.following = following;
+		this.trends = trends;
+		this.posts = posts;
+	}
 
-    // getUserId() {
-    // 	return this.userId;
-    // }
+	// getUserId() {
+	// 	return this.userId;
+	// }
 
-    getAvatar() {
-        return this.avatar;
-    }
-    getEmailId() {
-        return this.emailId;
-    }
-    getPassword() {
-        return this.password;
-    }
-    getName() {
-        return this.name;
-    }
-    getFollowers() {
-        return this.followers;
-    }
-    getFollowing() {
-        return this.following;
-    }
-    getTrends() {
-        return this.trends;
-    }
-    getPosts() {
-        return this.posts;
-    }
+	getAvatar() {
+		return this.avatar;
+	}
+	getEmailId() {
+		return this.emailId;
+	}
+	getPassword() {
+		return this.password;
+	}
+	getName() {
+		return this.name;
+	}
+	getFollowers() {
+		return this.followers;
+	}
+	getFollowing() {
+		return this.following;
+	}
+	getTrends() {
+		return this.trends;
+	}
+	getPosts() {
+		return this.posts;
+	}
 
-    addPost(post) {
-        this.posts.push(post);
-    }
+	addPost(post) {
+		this.posts.push(post);
+	}
 
-    updatePostByIndex(post, index) {
-        this.posts[index] = post;
-    }
+	updatePostByIndex(post, index) {
+		this.posts[index] = post;
+	}
 
-    addFollowers(emailId) {
-        this.followers.push(emailId);
-    }
+	addFollowers(emailId) {
+		this.followers.push(emailId);
+	}
 
-    addFollowing(emailId) {
-        this.following.push(emailId);
-    }
+	addFollowing(emailId) {
+		this.following.push(emailId);
+	}
 }
