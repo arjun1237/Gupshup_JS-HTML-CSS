@@ -15,6 +15,23 @@
 	color: white;
 }
 
+.list-group-item, .card{
+	border-color: #89216b69;
+}
+
+.card-header{
+	background-image: linear-gradient(to right, #89216bb9, #da445370) !important;
+	color: white;
+}
+
+.card-body{
+	background-color: #da44a115;
+}
+
+.reply{
+	cursor: pointer;
+}
+
 textarea:focus,
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -36,7 +53,7 @@ input[type="color"]:focus,
 	outline: 0 none;
 }
 
-.like{
+.like, .delete{
 	cursor: pointer;
 	margin-right: 10px;
 }
