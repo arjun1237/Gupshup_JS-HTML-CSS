@@ -3,7 +3,7 @@ export class Post {
 		this.text = text;
 		this.emailId = emailId;
 		this.postId = emailId + Date.now();
-		this.likes = 0;
+		this.likes = [];
 		this.comments = [];
 		this.timestamp = Date.now();
 	}
