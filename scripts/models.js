@@ -1,7 +1,7 @@
 export class Post {
 	constructor(text, emailId) {
 		this.text = text;
-		// this.userId = userId;
+		this.emailId = emailId;
 		this.postId = emailId + Date.now();
 		this.likes = 0;
 		this.comments = [];
