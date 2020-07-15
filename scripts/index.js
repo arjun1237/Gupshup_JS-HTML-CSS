@@ -8,11 +8,12 @@ let user = new models.User(avatar, emailId, password, name, followers, following
 function displayPosts() {
 	console.log(posts);
 	let postsDiv = document.getElementById('postsDiv');
-	postsDiv.innerHTML = '';
-	for (let key in posts) {
-		let text = posts[key]['text'];
+	// postsDiv.innerHTML = '';
+	let str = ''
+	for (let i=posts.length-1; i>=0; i--) {
+		let text = posts[i]['text'];
 
-		postsDiv.innerHTML += `
+		str += `
 		<div class="card my-2">
 			<div class="card-body">
 			${text}
@@ -21,6 +22,7 @@ function displayPosts() {
 
 		`;
 	}
+	postsDiv.innerHTML = str
 }
 function addPost() {
 	let text = document.getElementById('addPost').value;

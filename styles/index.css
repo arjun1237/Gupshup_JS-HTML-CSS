@@ -1,0 +1,11 @@
+.adv-handler{
+    height: fit-content !important;
+    background-image: linear-gradient(to right, #da445369, #89216b5e) !important;
+    position: fixed;
+    top: 60px;
+    right: 0;
+}
+
+.adv-handler > .card{
+    margin-bottom: 13px;
+}

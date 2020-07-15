@@ -5,6 +5,27 @@
 	font-size: 25px;
 }
 
+body  {
+	background-image: url("");
+}
+/* 
+.nav-handler{
+	position: fixed;
+} */
+
+.bg-handler {
+    position: relative;
+    /* overflow: hidden; */
+}
+.bg-handler img {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0.4;
+}
+
 .circular-pic {
 	overflow: hidden;
 	border-radius: 50%;
