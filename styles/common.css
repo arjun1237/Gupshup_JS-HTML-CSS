@@ -8,6 +8,8 @@
 .circular-pic {
 	overflow: hidden;
 	border-radius: 50%;
+	width: 40px !important;
+	height: 40px !important;
 }
 
 .bg-main-gradient {
@@ -30,6 +32,11 @@
 
 .reply{
 	cursor: pointer;
+}
+
+.btn-height {
+	height: 40px;
+	width: 150px;
 }
 
 textarea:focus,
