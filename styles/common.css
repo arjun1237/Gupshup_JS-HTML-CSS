@@ -8,11 +8,18 @@
 .circular-pic {
 	overflow: hidden;
 	border-radius: 50%;
+	width: 40px !important;
+	height: 40px !important;
 }
 
 .bg-main-gradient {
 	background-image: linear-gradient(to right, #da4453, #89216b) !important;
 	color: white;
+}
+
+.btn-height {
+	height: 40px;
+	width: 150px;
 }
 
 textarea:focus,

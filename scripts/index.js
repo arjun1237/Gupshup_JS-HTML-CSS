@@ -5,6 +5,23 @@ console.log(usersData[userIndex]);
 let { avatar, emailId, password, name, followers, following, trends, posts } = usersData[userIndex];
 let user = new models.User(avatar, emailId, password, name, followers, following, trends, posts);
 
+function displayPosts() {
+	console.log(posts);
+	let postsDiv = document.getElementById('postsDiv');
+	postsDiv.innerHTML = '';
+	for (let key in posts) {
+		let text = posts[key]['text'];
+
+		postsDiv.innerHTML += `
+		<div class="card my-2">
+			<div class="card-body">
+			${text}
+			</div>
+		</div>
+
+		`;
+	}
+}
 function addPost() {
 	let text = document.getElementById('addPost').value;
 	text = text.trim();
@@ -21,11 +38,12 @@ function refreshDisplay() {
 }
 
 window.onload = () => {
+	displayPosts();
 	let addPostBtn = document.getElementById('addPostBtn');
 	addPostBtn.addEventListener('click', () => {
 		event.preventDefault();
 		console.log('adding post');
 		addPost();
-		// refreshDisplay();
+		refreshDisplay();
 	});
 };
