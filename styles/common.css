@@ -5,10 +5,6 @@
 	font-size: 25px;
 }
 
-body  {
-	background-image: url("");
-}
-
 .click-handler{
 	cursor: pointer;
 }
@@ -18,14 +14,9 @@ body  {
 	box-shadow: 0 1px 1px rgba(255, 255, 255, 0.075) inset, 0 0 8px rgba(255, 255, 255, 0.6);
 	outline: 0 none;
 }
-/* 
-.nav-handler{
-	position: fixed;
-} */
 
 .bg-handler {
     position: relative;
-    /* overflow: hidden; */
 }
 .bg-handler img {
     position: fixed;
@@ -67,7 +58,18 @@ body  {
 
 .btn-height {
 	height: 40px;
-	width: 150px;
+}
+
+.adv-handler{
+    height: fit-content !important;
+    background-image: linear-gradient(to right, #da445369, #89216b5e) !important;
+    position: fixed;
+    top: 60px;
+    right: 0;
+}
+
+.adv-handler > .card{
+    margin-bottom: 13px;
 }
 
 textarea:focus,
