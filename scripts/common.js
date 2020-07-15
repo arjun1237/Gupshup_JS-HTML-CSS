@@ -45,6 +45,17 @@ users[userIndex].addPost(
 );
 users[userIndex].addPost('vnksdhrgksdnfv');
 users[userIndex].addPost('laejrg;ajergojaer');
+
+let posts = users[userIndex].getPosts()
+posts[0].addComments("that is true", 'mani@mani.com')
+posts[0].addComments("to the point", 'mani@mani.com')
+posts[0].addComments("good obeservation", 'mani@mani.com')
+posts[0].addComments("i second that", 'arjun@arjun.com')
+
+console.log(posts)
+
+users[userIndex].updatePostByIndex(posts[0], 0)
+
 users[userIndex].addFollowers('arjun@arjun.com');
 users[userIndex].addFollowing('mani@mani.com');
 

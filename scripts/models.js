@@ -45,25 +45,24 @@ export class Post {
 		}
 	}
 
-	addComments(text) {
+	addComments(text, userID) {
 		text = text.trim();
 		if (text.length != 0) {
-			this.comments.push(new Comment(text));
+			this.comments.push(new Comment(text, userID));
 		}
 	}
 }
 
 export class Comment {
-	constructor(text) {
+	constructor(text, userID) {
 		this.text = text;
 		this.timestamp = Date.now();
+		this.userID = userID
 	}
 
 	edit() {}
 
-	delete() {}
-
-	getId() {}
+	getUserId() {}
 
 	getText() {}
 
@@ -117,6 +116,10 @@ export class User {
 		if (text.length != 0) {
 			this.posts.push(new Post(text, this.emailId));
 		}
+	}
+
+	updatePostByIndex(post, index){
+		this.posts[index] = post
 	}
 
 	addFollowers(emailId) {
