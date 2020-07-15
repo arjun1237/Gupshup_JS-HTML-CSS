@@ -5,6 +5,7 @@ export class Post {
 		this.postId = emailId + Date.now();
 		this.likes = 0;
 		this.comments = [];
+		this.timestamp = Date.now()
 	}
 
 	edit(text) {
@@ -17,6 +18,10 @@ export class Post {
 	// delete() {}
 
 	share() {}
+
+	getTimestamp(){
+		return this.timestamp
+	}
 
 	getLikes() {
 		return this.likes;

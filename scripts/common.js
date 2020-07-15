@@ -1,4 +1,3 @@
-alert('hi');
 import * as models from './models.js';
 
 const users = [
