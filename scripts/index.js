@@ -9,8 +9,8 @@ function displayPosts() {
 	console.log(posts);
 	let postsDiv = document.getElementById('postsDiv');
 	// postsDiv.innerHTML = '';
-	let str = ''
-	for (let i=posts.length-1; i>=0; i--) {
+	let str = '';
+	for (let i = posts.length - 1; i >= 0; i--) {
 		let text = posts[i]['text'];
 
 		str += `
@@ -22,7 +22,7 @@ function displayPosts() {
 
 		`;
 	}
-	postsDiv.innerHTML = str
+	postsDiv.innerHTML = str;
 }
 function addPost() {
 	let text = document.getElementById('addPost').value;
@@ -40,7 +40,7 @@ function refreshDisplay() {
 }
 
 window.onload = () => {
-	displayPosts();
+	// displayPosts();
 	let addPostBtn = document.getElementById('addPostBtn');
 	addPostBtn.addEventListener('click', () => {
 		event.preventDefault();
