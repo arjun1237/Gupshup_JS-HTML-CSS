@@ -1,3 +1,7 @@
-.btn-height{
-    width: 150px;
+.btn-height {
+	width: 150px;
+}
+
+.bg-white {
+	background-image: linear-gradient(to right, #da445369, #89216b5e) !important;
 }

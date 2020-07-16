@@ -26,7 +26,8 @@ function displayPosts() {
 			<div class="card-body click-handler" data-info='${posts[i].postId}'>
 				<div class="row ml-0 d-flex flex-row" data-info='${posts[i].postId}'>
 					<div>
-						<img class="circular-pic mx-2" src='${userPost.avatar}' alt="" data-info='${posts[i].postId}'>
+						<img class="circular-pic mx-2" width="60" height="60" src='${userPost.avatar}' alt="" data-info='${posts[i]
+			.postId}'>
 					</div>
 					<div data-info='${posts[i].postId}'>
 						<h6 class="m-0" data-info='${posts[i].postId}'>${userPost.name}</h6>
