@@ -136,8 +136,20 @@ function deletePost(data) {
 	localStorage.setItem('usersDB', JSON.stringify(usersData));
 }
 
+function updateUserAvatar() {
+	let userAvatar = document.getElementsByClassName('userAvatar');
+	for (let i = 0; i < userAvatar.length; i++) {
+		userAvatar[i].setAttribute('src', avatar);
+	}
+	let userName = document.getElementsByClassName('userName');
+	for (let i = 0; i < userName.length; i++) {
+		userName[i].textContent = name;
+	}
+}
+
 window.onload = () => {
 	displayPosts();
+	updateUserAvatar();
 	let addPostBtn = document.getElementById('addPostBtn');
 	addPostBtn.addEventListener('click', () => {
 		event.preventDefault();
