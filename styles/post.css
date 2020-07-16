@@ -1,3 +1,9 @@
 .btn-height{
     width: 250px !important;
 }
+
+.return{
+    font-size: 30px !important;
+    color: #61006177;
+    transform: rotate(90deg);
+}

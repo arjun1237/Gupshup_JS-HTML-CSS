@@ -38,7 +38,7 @@ const users = [
     ),
 ];
 
-let userIndex = users.findIndex((x) => x.getEmailId() === "aayu@aayu.com");
+let userIndex = users.findIndex((x) => x.emailId === "aayu@aayu.com");
 users[userIndex].addFollowers("arjun@arjun.com");
 users[userIndex].addFollowing("mani@mani.com");
 
