@@ -52,10 +52,16 @@ function appendPost(post, user) {
 	} else {
 		color = 'fa-heart-o';
 	}
-	likes = likes.length;
+    likes = likes.length;
 
-	let str = `<div class="card my-2 border-0" data-info='${post.postId}'>
-            <div class="card-body click-handler">
+    let isUsersPost = post.postId.includes(users[currentUser].emailId)
+    let delPost = ''
+    if(isUsersPost) delPost = `<div><i class="fa fa-trash clr-violet" data-delete='${post.postId}'></i></div>`
+    
+    let div = document.createElement('div')
+    div.classList.add('card', 'my-2', 'border-0')
+
+	let str = `<div class="card-body click-handler">
                 <div class="row ml-0 d-flex flex-row" >
                     <div>
                         <img class="circular-pic mx-2" src='${user.avatar}' alt="" >
@@ -70,14 +76,80 @@ function appendPost(post, user) {
                     <hr>
                     <div class="d-flex justify-content-between" >
                         <div><i class="fa ${color}" data-like='${post.postId}'></i> <span> ${likes} </span> </div>
-                        <div><i class="fa fa-trash clr-violet" data-delete='${post.postId}'></i></div>
+                        ${delPost}
                     </div>
                 </div>
-            </div>
-        </div>`;
-	postObj.innerHTML = str;
+            </div>`;
+    div.innerHTML = str
+    div.addEventListener('click', handleClick)
+	postObj.append(div);
 
 	displayComments(post);
+}
+
+function handleClick(){
+    event.stopPropagation()
+    let like = event.target.getAttribute('data-like')
+    let del = event.target.getAttribute('data-delete')
+    if(like){
+        if(incrementLikes(like)){
+			event.target.classList.remove('fa-heart-o');
+			event.target.classList.add('fa-heart', 'text-danger');
+			event.target.nextElementSibling.textContent = Number(event.target.nextElementSibling.textContent) + 1;
+		} else {
+			event.target.classList.remove('fa-heart', 'text-danger');
+			event.target.classList.add('fa-heart-o');
+			event.target.nextElementSibling.textContent = Number(event.target.nextElementSibling.textContent) - 1;
+		}
+    }
+    else if(del){
+		deletePost(del);
+        event.target.parentElement.parentElement.parentElement.parentElement.remove();
+        location.href = 'index.html'
+    }
+}
+
+function deletePost(data) {
+	let postEmailId = data.split('.com');
+	postEmailId = postEmailId[0] + '.com';
+
+	let postUserIndex = users.findIndex((x) => x.emailId === postEmailId);
+
+	let posts = users[postUserIndex]['posts'];
+
+	let updatedPosts = [];
+	posts.forEach((x) => {
+		if (!(x.postId === data)) {
+			updatedPosts.push(x);
+		}
+	});
+	users[postUserIndex]['posts'] = updatedPosts;
+	localStorage.setItem('usersDB', JSON.stringify(users));
+}
+
+function incrementLikes(postLike) {
+	let flag = true;
+	let postEmailId = postLike.split('.com');
+	postEmailId = postEmailId[0] + '.com';
+
+	let postUserIndex = users.findIndex((x) => x.emailId === postEmailId);
+
+	let posts = users[postUserIndex]['posts'];
+
+	let postIdIndex = posts.findIndex((x) => x.postId == postLike);
+    let likes = new Set(users[postUserIndex]['posts'][postIdIndex]['likes']);
+    let emailId = users[currentUser].emailId
+
+	if (likes.has(emailId)) {
+		likes.delete(emailId);
+		flag = false;
+	} else {
+		likes.add(emailId);
+	}
+	likes = [ ...likes ];
+	users[postUserIndex]['posts'][postIdIndex]['likes'] = likes;
+	localStorage.setItem('usersDB', JSON.stringify(users));
+	return flag;
 }
 
 function displayComments(post) {

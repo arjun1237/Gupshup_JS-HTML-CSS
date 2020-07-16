@@ -13,6 +13,12 @@ function displayPosts() {
 		let div = document.createElement('div');
 		div.classList.add('card', 'my-2', 'border-0');
 
+		
+		let isUsersPost = posts[i].postId.includes(emailId)
+		let delPost = ''
+		if(isUsersPost) delPost = `<div><i class="fa fa-trash clr-violet" data-delete='${posts[i].postId}'></i></div>`
+		else delPost = `<div><i class="fa fa-trash clr-violet visible-handle" data-delete='${posts[i].postId}'></i></div>`
+
 		let likes = posts[i].likes;
 		let color;
 		if (likes.includes(emailId)) {
@@ -39,7 +45,7 @@ function displayPosts() {
 					<div class="d-flex justify-content-between" data-info='${posts[i].postId}'>
 						<div><i class="fa ${color}" data-like='${posts[i].postId}'></i> <span> ${likes} </span> </div>
 						<div><i class="fa fa-comment clr-violet" data-info='${posts[i].postId}'></i>${posts[i].comments.length}</div>
-						<div><i class="fa fa-trash clr-violet" data-delete='${posts[i].postId}'></i></div>
+						${delPost}
 					</div>
 				</div>
 			</div>
