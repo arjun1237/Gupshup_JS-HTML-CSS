@@ -56,6 +56,13 @@ function addPost() {
 	if (text.length != 0) {
 		let post = new models.Post(text, emailId);
 		user.addPost(post);
+
+		// add same post in followers posts
+		for (let i = 0; i < followers.length; i++) {
+			let postFollowerIndex = usersData.findIndex((x) => x.emailId === followers[i]);
+			usersData[postFollowerIndex]['posts'].push(post);
+		}
+
 		usersData[userIndex] = user;
 		localStorage.setItem('usersDB', JSON.stringify(usersData));
 	}
@@ -106,12 +113,12 @@ function handlePostClick() {
 			event.target.nextElementSibling.textContent = Number(event.target.nextElementSibling.textContent) - 1;
 		}
 	} else if (postDelete) {
-		deletePost(postDelete)
-		event.target.parentElement.parentElement.parentElement.parentElement.remove()
+		deletePost(postDelete);
+		event.target.parentElement.parentElement.parentElement.parentElement.remove();
 	}
 }
 
-function deletePost(data){
+function deletePost(data) {
 	let postEmailId = data.split('.com');
 	postEmailId = postEmailId[0] + '.com';
 
@@ -119,10 +126,10 @@ function deletePost(data){
 
 	let posts = usersData[postUserIndex]['posts'];
 
-	let updatedPosts = []
-	posts.forEach(x => {
-		if(!(x.postId === data)){
-			updatedPosts.push(x)
+	let updatedPosts = [];
+	posts.forEach((x) => {
+		if (!(x.postId === data)) {
+			updatedPosts.push(x);
 		}
 	});
 	usersData[postUserIndex]['posts'] = updatedPosts;
