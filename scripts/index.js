@@ -22,8 +22,7 @@ function displayPosts() {
 		}
 		likes = likes.length;
 
-		let str = '';
-		str += `
+		let str = `
 			<div class="card-body click-handler" data-info='${posts[i].postId}'>
 				<div class="row ml-0 d-flex flex-row" data-info='${posts[i].postId}'>
 					<div>
@@ -31,7 +30,7 @@ function displayPosts() {
 					</div>
 					<div data-info='${posts[i].postId}'>
 						<h6 class="m-0" data-info='${posts[i].postId}'>${userPost.name}</h6>
-						<div data-info='${posts[i].postId}'><small>${posts[i].timestamp}</small></div>
+						<div data-info='${posts[i].postId}'><small>${moment(posts[i].timestamp).fromNow()}</small></div>
 					</div>
 				</div>
 				<div class="m-2" data-info='${posts[i].postId}'>

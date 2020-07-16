@@ -50,7 +50,7 @@ function appendPost(post, user){
                     </div>
                     <div >
                         <h6 class="m-0" >${user.name}</h6>
-                        <div ><small>${post.timestamp}</small></div>
+                        <div ><small>${moment(post.timestamp).fromNow()}</small></div>
                     </div>
                 </div>
                 <div class="m-2" >
@@ -86,7 +86,7 @@ function displayComments(post){
                         </div>
                         <div >
                             <h6 class="m-0" >${user.name}</h6>
-                            <div ><small>${comment.timestamp}</small></div>
+                            <div ><small>${moment(comment.timestamp).fromNow()}</small></div>
                         </div>
                     </div>
                     <div class="m-2" >
@@ -137,7 +137,7 @@ function renderComment(comment){
                         </div>
                         <div >
                             <h6 class="m-0" >${user.name}</h6>
-                            <div ><small>${comment.timestamp}</small></div>
+                            <div ><small>${moment(comment.timestamp).fromNow()}</small></div>
                         </div>
                     </div>
                     <div class="m-2" >
