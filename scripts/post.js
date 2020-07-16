@@ -58,7 +58,7 @@ function appendPost(post, user){
                     <hr>
                     <div class="d-flex justify-content-between" >
                         <div><i class="fa ${color}" data-like='${post.postId}'></i> <span> ${likes} </span> </div>
-                        <div><i class="fa fa-trash-o" data-delete='${post.postId}'></i></div>
+                        <div><i class="fa fa-trash clr-violet" data-delete='${post.postId}'></i></div>
                     </div>
                 </div>
             </div>

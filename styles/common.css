@@ -10,9 +10,14 @@
 }
 
 .click-handler:hover{
-	border-color: rgba(255, 255, 255, 0.8);
+	border-color: #ffffffcc;
 	box-shadow: 0 1px 1px rgba(255, 255, 255, 0.075) inset, 0 0 8px rgba(255, 255, 255, 0.6);
 	outline: 0 none;
+}
+
+.clr-violet{
+	color: #ce2278;
+	margin-right: 3px;
 }
 
 .bg-handler {

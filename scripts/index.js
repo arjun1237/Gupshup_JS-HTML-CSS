@@ -39,8 +39,8 @@ function displayPosts() {
 					<hr>
 					<div class="d-flex justify-content-between" data-info='${posts[i].postId}'>
 						<div><i class="fa ${color}" data-like='${posts[i].postId}'></i> <span> ${likes} </span> </div>
-						<div><i class="fa fa-comment-o" data-info='${posts[i].postId}'></i>${posts[i].comments.length}</div>
-						<div><i class="fa fa-trash-o" data-delete='${posts[i].postId}'></i></div>
+						<div><i class="fa fa-comment clr-violet" data-info='${posts[i].postId}'></i>${posts[i].comments.length}</div>
+						<div><i class="fa fa-trash clr-violet" data-delete='${posts[i].postId}'></i></div>
 					</div>
 				</div>
 			</div>
@@ -107,8 +107,27 @@ function handlePostClick() {
 			event.target.nextElementSibling.textContent = Number(event.target.nextElementSibling.textContent) - 1;
 		}
 	} else if (postDelete) {
-		console.log('delete');
+		deletePost(postDelete)
+		event.target.parentElement.parentElement.parentElement.parentElement.remove()
 	}
+}
+
+function deletePost(data){
+	let postEmailId = data.split('.com');
+	postEmailId = postEmailId[0] + '.com';
+
+	let postUserIndex = usersData.findIndex((x) => x.emailId === postEmailId);
+
+	let posts = usersData[postUserIndex]['posts'];
+
+	let updatedPosts = []
+	posts.forEach(x => {
+		if(!(x.postId === data)){
+			updatedPosts.push(x)
+		}
+	});
+	usersData[postUserIndex]['posts'] = updatedPosts;
+	localStorage.setItem('usersDB', JSON.stringify(usersData));
 }
 
 window.onload = () => {
