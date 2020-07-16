@@ -12,7 +12,7 @@ Gupshup lets you add posts. You can also comment & like other people's posts.
 
 # Screenshots
 
-<img src="https://github.com/arjun1237/gupshup/blob/master/images/uses_feed.png">
+<img src="https://github.com/arjun1237/gupshup/blob/master/images/user_feed.png">
 <img src="https://github.com/arjun1237/gupshup/blob/master/images/post_page.png">
 
 ## Installation

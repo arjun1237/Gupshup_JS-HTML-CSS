@@ -64,7 +64,7 @@ function appendPost(post, user) {
 	let str = `<div class="card-body click-handler">
                 <div class="row ml-0 d-flex flex-row" >
                     <div>
-                        <img class="circular-pic mx-2" src='${user.avatar}' alt="" >
+                        <img class="circular-pic mx-2" width="60" height="60" src='${user.avatar}' alt="" >
                     </div>
                     <div >
                         <h6 class="m-0" >${user.name}</h6>
@@ -166,7 +166,7 @@ function displayComments(post) {
                 <div>
                     <div class="row ml-0 d-flex flex-row" >
                         <div>
-                            <img class="circular-pic mx-2" src='${user.avatar}' alt="" >
+                            <img class="circular-pic mx-2" width="60" height="60" src='${user.avatar}' alt="" >
                         </div>
                         <div >
                             <h6 class="m-0" >${user.name}</h6>
@@ -217,7 +217,7 @@ function renderComment(comment) {
                 <div>
                     <div class="row ml-0 d-flex flex-row" >
                         <div>
-                            <img class="circular-pic mx-2" src='${user.avatar}' alt="" >
+                            <img class="circular-pic mx-2" width="60" height="60" src='${user.avatar}' alt="" >
                         </div>
                         <div >
                             <h6 class="m-0" >${user.name}</h6>
