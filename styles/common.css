@@ -32,6 +32,10 @@
     opacity: 0.4;
 }
 
+.bg-green-gradient{
+    background-image: linear-gradient(to right, #e6d02a, #be4812);
+}
+
 .circular-pic {
 	overflow: hidden;
 	border-radius: 50%;
