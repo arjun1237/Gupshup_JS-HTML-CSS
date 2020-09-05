@@ -4,6 +4,68 @@ let userIndex = localStorage.getItem('userIndex');
 let { avatar, emailId, password, name, followers, following, trends, posts } = usersData[userIndex];
 let user = new models.User(avatar, emailId, password, name, followers, following, trends, posts);
 
+function createPost(posts, i, userPost, text, color, likes, delPost) {
+	let str = `
+	<div class="card-body click-handler" data-info='${posts[i].postId}'>
+		<div class="row ml-0 d-flex flex-row" data-info='${posts[i].postId}'>
+			<div>
+				<img class="circular-pic mx-2" width="60" height="60" src='${userPost.avatar}' alt="" data-info='${posts[i]
+		.postId}'>
+			</div>
+			<div data-info='${posts[i].postId}'>
+				<h6 class="m-0" data-info='${posts[i].postId}'>${userPost.name}</h6>
+				<div data-info='${posts[i].postId}'><small>${moment(posts[i].timestamp).fromNow()}</small></div>
+			</div>
+		</div>
+		<div class="m-2" data-info='${posts[i].postId}'>
+			<p data-info='${posts[i].postId}'>${text}</p>
+			<hr>
+			<div class="d-flex justify-content-between" data-info='${posts[i].postId}'>
+				<div><i class="fa ${color}" data-like='${posts[i].postId}'></i> <span> ${likes} </span> </div>
+				<div><i class="fa fa-comment clr-violet" data-info='${posts[i].postId}'></i>${posts[i].comments.length}</div>
+				${delPost}
+			</div>
+		</div>
+	</div>
+`;
+
+	let div = document.createElement('div');
+	let div11 = document.createElement('div');
+	let div12 = document.createElement('div');
+	let div111 = document.createElement('div');
+	let div112 = document.createElement('div');
+
+	div.classList.add('card-body', 'click-handler');
+	div.setAttribute('data-info', posts[i].postId);
+	div11.classList.add('row', 'ml-0', 'd-flex', 'flex-row');
+	div12.classList.add('m-2');
+	div12.setAttribute('data-info', posts[i].postId);
+	div112.setAttribute('data-info', posts[i].postId);
+
+	div111.innerHTML = `<img class="circular-pic mx-2" width="60" height="60" src='${userPost.avatar}' alt="" data-info='${posts[
+		i
+	].postId}'>`;
+
+	div112.innerHTML = `<h6 class="m-0" data-info='${posts[i].postId}'>${userPost.name}</h6>
+	<div data-info='${posts[i].postId}'><small>${moment(posts[i].timestamp).fromNow()}</small></div>`;
+
+	div12.innerHTML = `
+	<p data-info='${posts[i].postId}'>${text}</p>
+	<hr>
+	<div class="d-flex justify-content-between" data-info='${posts[i].postId}'>
+		<div><i class="fa ${color}" data-like='${posts[i].postId}'></i> <span> ${likes} </span> </div>
+		<div><i class="fa fa-comment clr-violet" data-info='${posts[i].postId}'></i>${posts[i].comments.length}</div>
+		${delPost}
+	</div>
+
+	`;
+
+	div11.append(div111, div112);
+
+	div.append(div11, div12);
+	return div;
+}
+
 function displayPosts() {
 	let postsDiv = document.getElementById('postsDiv');
 	for (let i = posts.length - 1; i >= 0; i--) {
@@ -13,11 +75,12 @@ function displayPosts() {
 		let div = document.createElement('div');
 		div.classList.add('card', 'my-2', 'border-0');
 
-		
-		let isUsersPost = posts[i].postId.includes(emailId)
-		let delPost = ''
-		if(isUsersPost) delPost = `<div><i class="fa fa-trash clr-violet" data-delete='${posts[i].postId}'></i></div>`
-		else delPost = `<div><i class="fa fa-trash clr-violet visible-handle" data-delete='${posts[i].postId}'></i></div>`
+		let isUsersPost = posts[i].postId.includes(emailId);
+		let delPost = '';
+		if (isUsersPost) delPost = `<div><i class="fa fa-trash clr-violet" data-delete='${posts[i].postId}'></i></div>`;
+		else
+			delPost = `<div><i class="fa fa-trash clr-violet visible-handle" data-delete='${posts[i]
+				.postId}'></i></div>`;
 
 		let likes = posts[i].likes;
 		let color;
@@ -28,31 +91,9 @@ function displayPosts() {
 		}
 		likes = likes.length;
 
-		let str = `
-			<div class="card-body click-handler" data-info='${posts[i].postId}'>
-				<div class="row ml-0 d-flex flex-row" data-info='${posts[i].postId}'>
-					<div>
-						<img class="circular-pic mx-2" width="60" height="60" src='${userPost.avatar}' alt="" data-info='${posts[i]
-			.postId}'>
-					</div>
-					<div data-info='${posts[i].postId}'>
-						<h6 class="m-0" data-info='${posts[i].postId}'>${userPost.name}</h6>
-						<div data-info='${posts[i].postId}'><small>${moment(posts[i].timestamp).fromNow()}</small></div>
-					</div>
-				</div>
-				<div class="m-2" data-info='${posts[i].postId}'>
-					<p data-info='${posts[i].postId}'>${text}</p>
-					<hr>
-					<div class="d-flex justify-content-between" data-info='${posts[i].postId}'>
-						<div><i class="fa ${color}" data-like='${posts[i].postId}'></i> <span> ${likes} </span> </div>
-						<div><i class="fa fa-comment clr-violet" data-info='${posts[i].postId}'></i>${posts[i].comments.length}</div>
-						${delPost}
-					</div>
-				</div>
-			</div>
-		`;
-		div.innerHTML = str;
+		let divBody = createPost(posts, i, userPost, text, color, likes, delPost);
 		div.addEventListener('click', handlePostClick);
+		div.append(divBody);
 		postsDiv.append(div);
 	}
 }
