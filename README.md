@@ -33,8 +33,8 @@ Your app is up & running on http://127.0.0.1:8080/
 
 ## Issues / Need changes
 
-- [] Index page rerenders on every new post.
-- [] Login/logout is not functioning.
-- [] Story buttons are static. A new property called stories can be added to the User class.
-- [] Search bar is static.
-- [] Profile Page is static.
+- [ ] Index page rerenders on every new post.
+- [ ] Login/logout is not functioning.
+- [ ] Story buttons are static. A new property called stories can be added to the User class.
+- [ ] Search bar is static.
+- [ ] Profile Page is static.
